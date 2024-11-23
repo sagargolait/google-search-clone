@@ -223,7 +223,7 @@ export default function GoogleSearch() {
                     type="submit"
                     aria-label="I'm Feeling Lucky"
                   >
-                    I'm Feeling Lucky
+                    I&apos;m Feeling Lucky
                   </button>
                 </div>
               </motion.div>

@@ -1,7 +1,6 @@
 "use client";
 
-import GoogleLensSearchHeader from "@/components/google-lens-search-header";
-import LensResults from "@/components/lensResults";
+import { Suspense } from "react";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { useImageUpload } from "@/contexts/ImageUploadContext";
 import { useSearch } from "@/hooks/useSearch";
@@ -9,8 +8,24 @@ import { useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import "react-image-crop/dist/ReactCrop.css";
 import ReactCrop, { type Crop } from "react-image-crop";
+import GoogleLensSearchHeader from "@/components/google-lens-search-header";
+import LensResults from "@/components/lensResults";
 
-export default function Home() {
+export default function ImageSearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div>
+          <LoadingSpinner />
+        </div>
+      }
+    >
+      <ImageSearchComponent />
+    </Suspense>
+  );
+}
+
+function ImageSearchComponent() {
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const [crop, setCrop] = useState<Crop>({

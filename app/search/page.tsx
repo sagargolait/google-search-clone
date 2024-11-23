@@ -1,13 +1,27 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-
+import { Suspense } from "react";
 import SearchHeader from "@/components/search/search-header";
 import SearchResults from "@/components/search/search-results";
 import SearchFilters from "@/components/search/search-filters";
-import { useSearch } from "@/hooks/useSearch";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div>
+          <LoadingSpinner />
+        </div>
+      }
+    >
+      <SearchComponent />
+    </Suspense>
+  );
+}
+
+function SearchComponent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const searchType = searchParams.get("searchType") || "";
