@@ -36,3 +36,5 @@ next-env.d.ts
 
 # Google Cloud credentials
 config/keys/google-cloud-key.json
+
+.env
