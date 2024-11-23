@@ -37,3 +37,10 @@ next-env.d.ts
 # Google Cloud credentials
 config/keys/google-cloud-key.json
 
+# environment variables
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
